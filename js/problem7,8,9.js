@@ -6,10 +6,16 @@ const loadPhotos = (showAllCheck) => {
 loadPhotos();
 
 const displayPhotos = (data, showAllCheck = true) => {
+  const showAllBtn = document.getElementById('show-all-btn');
   if(showAllCheck && data.length > 100 ){
     data = data.slice(0, 100);
+    showAllBtn.classList.remove('d-none');
+  }
+  else{
+    showAllBtn.classList.add('d-none');
   }
   const photosContainer = document.getElementById('photos-container');
+  photosContainer.textContent = '';
   data.forEach(element => {
     // console.log(element);
     const div = document.createElement('div');
